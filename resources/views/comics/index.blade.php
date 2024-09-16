@@ -28,7 +28,7 @@
                     <td> {{ $comic->sale_date }} </td>
                     <td> {{ $comic->price }} </td>
                     <td>
-                        <a href="#" class="btn btn-warning">
+                        <a href="{{route('comics.show', $comic)}}" class="btn btn-warning">
                             Dettagli
                         </a>
                     </td>
