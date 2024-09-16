@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Comic;
-use Illuminate\Support\Str;
+use App\Functions\Helper;
 
 
 class ComicsTableSeeder extends Seeder
@@ -19,7 +19,7 @@ class ComicsTableSeeder extends Seeder
         foreach ($comics as $comic) {
             $new_comic = new Comic();
             $new_comic->title = $comic['title'];
-            $new_comic->slug = $this->generateSlug($comic['title']);
+            $new_comic->slug = Helper::generateSlug($new_comic->title, Comic::class);
             $new_comic->description = $comic['description'];
             $new_comic->thumb = $comic['thumb'];
             $new_comic->price = $comic['price'];
@@ -29,22 +29,5 @@ class ComicsTableSeeder extends Seeder
 
             $new_comic->save();
         }
-    }
-
-    private function generateSlug($string){
-        $slug = Str::slug($string, '-');
-        $original_slug = $slug;
-
-        $exists = Comic::where('slug', $slug)->first();
-        $c = 1;
-
-        while($exists){
-            $slug = $original_slug . '-' . $c;
-            $exists = Comic::where('slug', $slug)->first();
-            $c++;
-        }
-
-        return $slug;
-
     }
 }

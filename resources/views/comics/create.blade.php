@@ -9,11 +9,11 @@
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Titolo</label>
-                <input name="title" type="email" class="form-control" id="title">
+                <input name="title" type="text" class="form-control" id="title">
             </div>
             <div class="mb-3">
-                <label for="src" class="form-label">Path Immagine</label>
-                <input name="src" type="text" class="form-control" id="src">
+                <label for="thumb" class="form-label">Path Immagine</label>
+                <input name="thumb" type="text" class="form-control" id="thumb">
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo</label>
@@ -28,7 +28,7 @@
                 <input name="sale_date" type="text" class="form-control" id="sale_date" placeholder="YYYY-MM-DD">
             </div>
             <div class="mb-3">
-                <label for="type" class="form-label">Data di vendita</label>
+                <label for="type" class="form-label">Tipo</label>
                 <input name="type" type="text" class="form-control" id="type">
             </div>
             <div class="mb-3">
