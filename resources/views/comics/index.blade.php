@@ -5,6 +5,13 @@
     <div class="container my-5 text-center">
         <h1 class="my-3">Comics</h1>
 
+        @if (session('deleted'))
+            <div class="alert alert-success" role="alert">
+                {{ session('deleted') }}
+            </div>
+        @endif
+
+
         <table class="table">
             <thead>
                 <tr>
@@ -34,7 +41,7 @@
                         <a href="{{route('comics.edit', $comic)}}" class="btn btn-warning">
                             <i class="fa-solid fa-pencil"></i>
                         </a>
-                        <form action="{{route('comics.destroy', $comic)}}" method="POST" class="d-inline">
+                        <form action="{{route('comics.destroy', $comic)}}" method="POST" class="d-inline" onsubmit="return confirm('Sei sicuro di voler eliminare {{$comic->title}}?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">
