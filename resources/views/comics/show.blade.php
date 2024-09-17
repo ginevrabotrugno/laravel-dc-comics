@@ -4,6 +4,18 @@
 @section('content')
     <div class="container my-5 text-center">
         <h1 class="my-3">  {{$comic->title}} </h1>
+
+        <a href="{{route('comics.edit', $comic)}}" class="btn btn-warning">
+            <i class="fa-solid fa-pencil"></i>
+        </a>
+        <form action="{{route('comics.destroy', $comic)}}" method="POST" class="d-inline" onsubmit="return confirm('Sei sicuro di voler eliminare {{$comic->title}}?')">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
+        </form>
+
         <h2 class="my-3"> {{ $comic->series }} </h2>
         <ul class="list-group my-3">
             <li class="list-group-item">PREZZO: {{ $comic->price }}</li>
