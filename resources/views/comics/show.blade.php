@@ -5,6 +5,12 @@
     <div class="container my-5 text-center">
         <h1 class="my-3">  {{$comic->title}} </h1>
 
+        @if (session('edited'))
+            <div class="alert alert-success" role="alert">
+                {{ session('edited') }}
+            </div>
+        @endif
+
         <a href="{{route('comics.edit', $comic)}}" class="btn btn-warning">
             <i class="fa-solid fa-pencil"></i>
         </a>
